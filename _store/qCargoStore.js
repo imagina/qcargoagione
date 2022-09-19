@@ -86,5 +86,6 @@ export default function qCargoStore() {
         showLoading,
         getLoading,
         getErrorMessage,
+        resetAwbTrackingList,
     }
 }

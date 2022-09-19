@@ -11,9 +11,16 @@
         tw-my-4
         tw-shadow-lg"
     >
-        <p class="tw-text-center tw-font-semibold">AIR WAYBILL TRACK AND TRACE</p>
-        <dynamic-field :field="airWaybillNumber" v-model="airWaybillNumber.value" />
-        <q-btn color="primary" label="Save" @click="getAwbTracking" />
+        <p class="tw-font-semibold">AIR WAYBILL TRACK AND TRACE</p>
+        <div class="tw-flex tw-w-full tw-space-x-4">
+          <div class="tw-w-64">
+            <dynamic-field 
+              :field="airWaybillNumber" 
+              v-model="airWaybillNumber.value" 
+              @enter="getAwbTracking"
+              />
+          </div>
+        </div>
     </div>
     <div>
       <flightDetail />
@@ -32,7 +39,7 @@ export default {
     return {
       airWaybillNumber: {
         value: null,
-        type: "input",
+        type: "search",
         props: {
           label: "Air Waybill Number",
           maxlength: 12,
@@ -42,7 +49,10 @@ export default {
   },
   methods: {
     async getAwbTracking() {
-      if(!this.airWaybillNumber.value || this.airWaybillNumber.value === '') return; 
+      if(!this.airWaybillNumber.value || this.airWaybillNumber.value === '') {
+        qCargoStore().resetAwbTrackingList();
+        return;
+      } 
       await qCargoStore().getAwbTracking(this.airWaybillNumber.value);
     }
   }
