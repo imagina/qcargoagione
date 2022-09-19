@@ -41,6 +41,7 @@ export default {
         value: null,
         type: "search",
         props: {
+          mask:'###-#########',
           label: "Air Waybill Number",
           maxlength: 12,
         },
