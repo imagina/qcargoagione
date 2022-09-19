@@ -1,5 +1,8 @@
 <template>
     <div class="tw-p-4">
+      <div class="tw-text-center">
+        <img src="https://agidev.blob.core.windows.net/agione/AGI_logo_app.png" alt="" srcset=""></img>
+      </div>
     <div
         class="
         tw-px-8
