@@ -3,7 +3,7 @@ export default {
         //permission: 'page.pages.manage',
         activated: true,
         authenticated: true,
-        path: '/cargoAdmin/index',
+        path: '/cargo-admin/awb-tracking',
         name: 'qcargoagione.admin.cargoAdmin',
         crud : import('../_crud/cargo.vue'),
         page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
