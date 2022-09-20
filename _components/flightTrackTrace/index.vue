@@ -23,6 +23,9 @@
               @enter="getAwbTracking"
               />
           </div>
+          <div>
+            <q-btn color="primary" :label="$tr('isite.cms.label.search')" @click="getAwbTracking" />
+          </div>
         </div>
     </div>
     <div>
@@ -34,6 +37,7 @@
 <script>
 import flightDetail from './flightDetail.vue';
 import qCargoStore from '../../_store/qCargoStore.js';
+
 export default {
   components: {
     flightDetail,
@@ -45,6 +49,7 @@ export default {
         type: "search",
         props: {
           mask:'###-#########',
+          unmaskedValue: true,
           label: "Air Waybill Number",
           maxlength: 12,
         },

@@ -1,4 +1,10 @@
 const pages = config('pages') // Get Pages from config
 export default [
-    pages.qcargoagione.cargo
+    {
+        title: 'icargo.cms.sidebar.cargoInfo',
+        icon: 'fa-light fa-truck-container',
+        children: [
+            pages.qcargoagione.awbTracking,
+        ]
+    },
 ]

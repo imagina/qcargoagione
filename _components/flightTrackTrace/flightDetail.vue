@@ -44,11 +44,28 @@
         </div>
         <div class="tw-px-4">
           <q-table
+            class="table-traking"
             title="Status information"
             :data="awbTrackingList.segments"
             :columns="columns"
-            :rows-per-page-options="[10, 20, 30, 40]"
-          />
+            :rows-per-page-options="[0]"
+          >
+          <template v-slot:body="props">
+                  <q-tr 
+                    :props="props" 
+                    class="tw-shadow-sm" 
+                    :class="{'tw-bg-gray-100': Boolean(props.rowIndex % 2)}"
+                  >
+                  <q-td v-for="col in props.cols"
+                        :key="col.name"
+                        :props="props">
+                    <span class="tw-font-semibold">
+                      {{ col.value }}
+                    </span>
+                  </q-td>
+                </q-tr>
+              </template>
+          </q-table>
         </div>
       </div>
     </div>
@@ -150,3 +167,12 @@ export default {
   },
 };
 </script>
+
+<style>
+  .table-traking .q-table__title {
+    @apply tw-text-black tw-font-semibold;
+  }
+  .table-traking .q-table th {
+    @apply tw-font-semibold tw-text-xs;
+  }
+</style>
