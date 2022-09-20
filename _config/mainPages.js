@@ -3,7 +3,7 @@ export default {
     permission: null,
     activated: true,
     authenticated: false,
-    path: '/cargo',
+    path: '/cargo/index',
     name: 'qcargoagione.admin.cargo',
     crud : import('../_crud/cargo.vue'),
     page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
