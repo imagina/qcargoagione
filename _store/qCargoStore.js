@@ -1,6 +1,7 @@
 //import { reactive } from '@vue/composition-api';
 import baseService from 'modules/qcrud/_services/baseService.js'
-import Vue, { reactive } from "vue";
+import { reactive } from "vue";
+import { reactive, getCurrentInstance } from "vue";
 
 const state = reactive({
     awbTrackingList: {
@@ -18,13 +19,14 @@ const state = reactive({
 });
 
 export default function qCargoStore() {
+    const proxy = getCurrentInstance().appContext.config.globalProperties
     async function getAwbTracking(key) {
         try {
             showLoading();
             const response = await baseService.post('apiRoutes.qcargoagione.awbTracking', {key});
             if(response.data.errorMessage) {
                 state.errorMessage = response.data.errorMessage;
-                Vue.prototype.$alert.info({
+                proxy.$alert.info({
                     mode: "modal",
                     title: '',
                     message: response.data.errorMessage,

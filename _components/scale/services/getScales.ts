@@ -1,6 +1,6 @@
 import baseService from 'modules/qcrud/_services/baseService.js'
 import scaleStore from '../stores/scale'
-import qRampStore from 'src/modules/qramp/_store/qRampStore';
+import qRampStore from 'modules/qramp/_store/qRampStore';
 
 export async function getMeasure(): Promise<void> {
     try {
