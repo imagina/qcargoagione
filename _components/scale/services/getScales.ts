@@ -1,4 +1,4 @@
-import baseService from '@imagina/qcrud/_services/baseService.js'
+import baseService from 'modules/qcrud/_services/baseService.js'
 import scaleStore from '../stores/scale'
 import qRampStore from 'src/modules/qramp/_store/qRampStore';
 

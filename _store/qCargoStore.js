@@ -1,5 +1,5 @@
 //import { reactive } from '@vue/composition-api';
-import baseService from '@imagina/qcrud/_services/baseService.js'
+import baseService from 'modules/qcrud/_services/baseService.js'
 import Vue, { reactive } from "vue";
 
 const state = reactive({
@@ -45,7 +45,7 @@ export default function qCargoStore() {
         } catch (error) {
            hideLoading();
            resetAwbTrackingList();
-           console.log(error); 
+           console.log(error);
         }
     }
     function getAwbTrackingList() {

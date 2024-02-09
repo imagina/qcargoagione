@@ -2,7 +2,7 @@ import Vue, { ref, computed, ComputedRef, getCurrentInstance } from 'vue';
 import store from '../stores/scale';
 import scaleStore from '../stores/scale'
 import { getScaleMeasuresList } from '../services/getScales';
-import cache from '@imagina/qsite/_plugins/cache';
+import cache from 'modules/qsite/_plugins/cache';
 
 export default function useModalStation() {
     const refModalScale: any = ref(null);

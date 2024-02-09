@@ -1,4 +1,4 @@
-import baseService from '@imagina/qcrud/_services/baseService.js'
+import baseService from 'modules/qcrud/_services/baseService.js'
 import scaleStore from '../stores/scale'
 
 export async function postScalePrint(): Promise<void> {
@@ -7,7 +7,7 @@ export async function postScalePrint(): Promise<void> {
         const response = await baseService.post('apiRoutes.qcargoagione.scalesPrint', {criteria: scaleStore.scaleId} );
         scaleStore.measureId = response.data.measureId;
         scaleStore.formPrint = {
-         ...scaleStore.formPrint, 
+         ...scaleStore.formPrint,
          ...response.data,
         };
         delete scaleStore.formPrint.status
@@ -17,7 +17,7 @@ export async function postScalePrint(): Promise<void> {
         scaleStore.loadingMeasuresList = false;
         console.log(error);
     }
-} 
+}
 
 export async function postMeasures(): Promise<void> {
     try {

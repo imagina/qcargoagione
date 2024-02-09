@@ -28,7 +28,7 @@ import { defineComponent } from "vue";
 import cardScale from "./components/cardScale.vue";
 import scaleList from "./components/scaleList.vue";
 import modalScale from './components/modalScale.vue'
-import QCharts from '@imagina/qsite/_components/master/charts.vue';
+import QCharts from 'modules/qsite/_components/master/charts.vue';
 import mainController from './controllers/main'
 import formPrint from './components/formPrint.vue'
 
