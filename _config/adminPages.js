@@ -1,6 +1,6 @@
 export default {
     awbTracking: {
-        //permission: 'page.pages.manage',
+        permission: 'cargo.awb-tracking.manage',
         activated: true,
         authenticated: true,
         path: '/awb-tracking/index',
@@ -13,5 +13,20 @@ export default {
         subHeader: {
           refresh: true,
         }
-    }
+    },
+    scales: {
+      permission: 'cargo.scales.manage',
+      activated: true,
+      authenticated: true,
+      path: '/scale/index',
+      name: 'qcargoagione.admin.scale',
+      crud : import('../_components/scale/index.vue'),
+      page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
+      layout: () => import('@imagina/qsite/_layouts/master.vue'),
+      title: 'icargo.cms.sidebar.scaleTracking',
+      icon: 'fa-thin fa-weight-scale', 
+      subHeader: {
+        refresh: true,
+      }
+  }
 }

@@ -5,6 +5,7 @@ export default [
         icon: 'fa-light fa-truck-container',
         children: [
             pages.qcargoagione.awbTracking,
+            pages.qcargoagione.scales,
         ]
     },
 ]

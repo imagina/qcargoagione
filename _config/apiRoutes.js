@@ -4,5 +4,10 @@ const urlBase = `/${moduleName}/${moduleVersion}`
 
 
 export default {
-    awbTracking: `${urlBase}/awb-tracking/{key}`
+    awbTracking: `${urlBase}/awb-tracking/{key}`,
+    scales: `${urlBase}/scales`,
+    scaleMeasures: `${urlBase}/scale-measures`,
+    scalesPrint: `${urlBase}/scales/print/{criteria}`,
+    measure: `${urlBase}/scales/measure`,
+    confirm: `${urlBase}scales/confirm`,
 }
