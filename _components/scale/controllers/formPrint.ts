@@ -1,9 +1,10 @@
 
-import Vue, { computed, onBeforeUnmount, ref } from "vue";
+import { computed, onBeforeUnmount, ref, getCurrentInstance } from "vue";
 import scaleStore from '../stores/scale'
 import { getScaleMeasuresList, getFlightaware } from "../services/getScales";
 import { postMeasures } from "../services/postScales";
 export default function formPrintController() {
+  const proxy = getCurrentInstance().appContext.config.globalProperties
     const refFormScale: any = ref(null);
     const formPrint = computed(() => scaleStore.formPrint);
     const showModal = computed({
@@ -26,22 +27,22 @@ export default function formPrintController() {
             type: "search",
             props: {
                 rules: [
-                    (val) => !!val || Vue.prototype.$tr("isite.cms.message.fieldRequired"),
+                    (val) => !!val || proxy.$tr("isite.cms.message.fieldRequired"),
                 ],
                 loading: scaleStore.loadingSearch,
-                label: `${Vue.prototype.$tr("ifly.cms.form.flight")}`,
+                label: `${proxy.$tr("ifly.cms.form.flight")}`,
                 clearable: true,
                 maxlength: 10,
                 color: "primary",
             },
-            label: Vue.prototype.$tr("ifly.cms.form.flight"),
+            label: proxy.$tr("ifly.cms.form.flight"),
         },
         date: {
             value: null,
             type: 'date',
             props: {
                 rules: [
-                    val => !!val || Vue.prototype.$tr('isite.cms.message.fieldRequired')
+                    val => !!val || proxy.$tr('isite.cms.message.fieldRequired')
                 ],
                 hint: 'Format: YYYY-MM-DD',
                 mask: 'YYYY-MM-DD',
@@ -51,7 +52,7 @@ export default function formPrintController() {
                 color: "primary",
                 format24h: true,
             },
-            label: Vue.prototype.$tr('isite.cms.label.date'),
+            label: proxy.$tr('isite.cms.label.date'),
         },
         destinationAirportId: {
             value: null,
@@ -63,7 +64,7 @@ export default function formPrintController() {
               crudProps: {
                 label: 'Destination Airport',
                 rules: [
-                    (val) => !!val || Vue.prototype.$tr("isite.cms.message.fieldRequired"),
+                    (val) => !!val || proxy.$tr("isite.cms.message.fieldRequired"),
                 ],
               },
               config: {options: {label: 'fullName', value: 'id'}},
@@ -74,7 +75,7 @@ export default function formPrintController() {
             type: "input",
             props: {
                 rules: [
-                    (val) => !!val || Vue.prototype.$tr("isite.cms.message.fieldRequired"),
+                    (val) => !!val || proxy.$tr("isite.cms.message.fieldRequired"),
                 ],
                 label: 'ULD Number',
                 clearable: true,
@@ -137,10 +138,10 @@ export default function formPrintController() {
             scaleStore.loadingSearch = false;
         }
     }
-    return { 
-        formPrint, 
-        formFields, 
-        showModal, 
+    return {
+        formPrint,
+        formFields,
+        showModal,
         loading,
         actions,
         clear,
@@ -149,6 +150,6 @@ export default function formPrintController() {
         addManually,
         dialog,
         search,
-        dataTable, 
+        dataTable,
     };
 }
