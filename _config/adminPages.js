@@ -6,10 +6,10 @@ export default {
         path: '/awb-tracking/index',
         name: 'qcargoagione.admin.cargoAdmin',
         crud : import('../_crud/cargo.vue'),
-        page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
-        layout: () => import('@imagina/qsite/_layouts/master.vue'),
+        page: () => import('modules/qcrud/_pages/admin/crudPage'),
+        layout: () => import('layouts/master.vue'),
         title: 'icargo.cms.sidebar.awbTracking',
-        icon: 'fa-light fa-plane-departure', 
+        icon: 'fa-light fa-plane-departure',
         subHeader: {
           refresh: true,
         }
@@ -21,10 +21,10 @@ export default {
       path: '/scale/index',
       name: 'qcargoagione.admin.scale',
       crud : import('../_components/scale/index.vue'),
-      page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
-      layout: () => import('@imagina/qsite/_layouts/master.vue'),
+      page: () => import('modules/qcrud/_pages/admin/crudPage'),
+      layout: () => import('layouts/master.vue'),
       title: 'icargo.cms.sidebar.scaleTracking',
-      icon: 'fa-thin fa-weight-scale', 
+      icon: 'fa-thin fa-weight-scale',
       subHeader: {
         refresh: true,
       }
