@@ -2,7 +2,7 @@ import { ref, computed, ComputedRef, getCurrentInstance } from 'vue';
 import store from '../stores/scale';
 import scaleStore from '../stores/scale'
 import { getScaleMeasuresList } from '../services/getScales';
-import cache from '@imagina/qsite/_plugins/cache';
+import cache from 'modules/qsite/_plugins/cache';
 
 export default function useModalStation() {
     const proxy = getCurrentInstance().appContext.config.globalProperties

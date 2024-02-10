@@ -1,7 +1,7 @@
 import { onMounted, ref, onBeforeUnmount } from "vue";
 import scaleStore from '../stores/scale'
 import { getScalesList, getScaleMeasuresList } from '../services/getScales'
-import cache from '@imagina/qsite/_plugins/cache';
+import cache from 'modules/qsite/_plugins/cache';
 
 export default function mainController() {
 
@@ -15,7 +15,7 @@ export default function mainController() {
             (await cache.get.item("scaleId")) !== "null"
                 ? await cache.get.item("scaleId")
                 : null;
-               
+
         scaleStore.scaleId = scaleStore.scaleList.find(item => item.id == scaleId)?.id || null;
         if (!scaleStore.scaleId) {
             scaleStore.showModal = true;

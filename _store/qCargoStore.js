@@ -1,5 +1,6 @@
 //import { reactive } from '@vue/composition-api';
-import baseService from '@imagina/qcrud/_services/baseService.js'
+import baseService from 'modules/qcrud/_services/baseService.js'
+import { reactive } from "vue";
 import { reactive, getCurrentInstance } from "vue";
 
 const state = reactive({
