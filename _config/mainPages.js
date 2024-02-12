@@ -6,7 +6,7 @@ export default {
     path: '/cargo/awb-tracking',
     name: 'qcargoagione.admin.cargo',
     crud : import('../_crud/cargo.vue'),
-    page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
+    page: () => import('modules/qcrud/_pages/admin/crudPage'),
     layout: () => import('layouts/blank.vue'),
     title: 'icargo.cms.sidebar.cargoInfo',
     icon: 'fa-light fa-truck-container',
