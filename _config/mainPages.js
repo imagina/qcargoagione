@@ -7,7 +7,7 @@ export default {
     name: 'qcargoagione.admin.cargo',
     crud : import('../_crud/cargo.vue'),
     page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
-    layout: () => import('@imagina/qsite/_layouts/blank.vue'),
+    layout: () => import('layouts/blank.vue'),
     title: 'icargo.cms.sidebar.cargoInfo',
     icon: 'fa-light fa-truck-container',
   }
