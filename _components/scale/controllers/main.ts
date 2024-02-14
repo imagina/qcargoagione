@@ -1,7 +1,7 @@
 import { onMounted, ref, onBeforeUnmount } from "vue";
 import scaleStore from '../stores/scale'
 import { getScalesList, getScaleMeasuresList } from '../services/getScales'
-import cache from 'modules/qsite/_plugins/cache';
+import { cache } from 'src/plugins/utils';
 
 export default function mainController() {
 
