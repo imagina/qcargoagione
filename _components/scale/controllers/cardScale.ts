@@ -1,9 +1,7 @@
 
-import Vue, { computed } from "vue";
+import { computed } from "vue";
 import scaleStore from "../stores/scale";
 import { postScalePrint } from '../services/postScales';
-import alert from 'modules/qsite/_plugins/alert';
-import { confirmPrint } from '../services/putScales';
 
 export default function cardScaleController() {
     const showModalScale = computed({
