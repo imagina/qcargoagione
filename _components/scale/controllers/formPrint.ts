@@ -1,10 +1,10 @@
 
-import { computed, onBeforeUnmount, ref, getCurrentInstance } from "vue";
+import { computed, onBeforeUnmount, ref } from "vue";
 import scaleStore from '../stores/scale'
 import { getScaleMeasuresList, getFlightaware } from "../services/getScales";
 import { postMeasures } from "../services/postScales";
+import { i18n } from 'src/plugins/utils'
 export default function formPrintController() {
-  const proxy = getCurrentInstance().appContext.config.globalProperties
     const refFormScale: any = ref(null);
     const formPrint = computed(() => scaleStore.formPrint);
     const showModal = computed({
@@ -27,22 +27,22 @@ export default function formPrintController() {
             type: "search",
             props: {
                 rules: [
-                    (val) => !!val || proxy.$tr("isite.cms.message.fieldRequired"),
+                    (val) => !!val || i18n.tr("isite.cms.message.fieldRequired"),
                 ],
                 loading: scaleStore.loadingSearch,
-                label: `${proxy.$tr("ifly.cms.form.flight")}`,
+                label: `${i18n.tr("ifly.cms.form.flight")}`,
                 clearable: true,
                 maxlength: 10,
                 color: "primary",
             },
-            label: proxy.$tr("ifly.cms.form.flight"),
+            label: i18n.tr("ifly.cms.form.flight"),
         },
         date: {
             value: null,
             type: 'date',
             props: {
                 rules: [
-                    val => !!val || proxy.$tr('isite.cms.message.fieldRequired')
+                    val => !!val || i18n.tr('isite.cms.message.fieldRequired')
                 ],
                 hint: 'Format: YYYY-MM-DD',
                 mask: 'YYYY-MM-DD',
@@ -52,7 +52,7 @@ export default function formPrintController() {
                 color: "primary",
                 format24h: true,
             },
-            label: proxy.$tr('isite.cms.label.date'),
+            label: i18n.tr('isite.cms.label.date'),
         },
         destinationAirportId: {
             value: null,
@@ -64,7 +64,7 @@ export default function formPrintController() {
               crudProps: {
                 label: 'Destination Airport',
                 rules: [
-                    (val) => !!val || proxy.$tr("isite.cms.message.fieldRequired"),
+                    (val) => !!val || i18n.tr("isite.cms.message.fieldRequired"),
                 ],
               },
               config: {options: {label: 'fullName', value: 'id'}},
@@ -75,7 +75,7 @@ export default function formPrintController() {
             type: "input",
             props: {
                 rules: [
-                    (val) => !!val || proxy.$tr("isite.cms.message.fieldRequired"),
+                    (val) => !!val || i18n.tr("isite.cms.message.fieldRequired"),
                 ],
                 label: 'ULD Number',
                 clearable: true,
