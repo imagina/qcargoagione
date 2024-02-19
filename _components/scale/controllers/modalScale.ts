@@ -1,11 +1,10 @@
-import { ref, computed, ComputedRef, getCurrentInstance } from 'vue';
+import { ref, computed, ComputedRef } from 'vue';
 import store from '../stores/scale';
 import scaleStore from '../stores/scale'
 import { getScaleMeasuresList } from '../services/getScales';
-import { cache } from 'src/plugins/utils';
+import { cache, i18n } from 'src/plugins/utils';
 
 export default function useModalStation() {
-    const proxy = getCurrentInstance().appContext.config.globalProperties
     const refModalScale: any = ref(null);
     const fields = computed(() => {
         return {
@@ -15,7 +14,7 @@ export default function useModalStation() {
                 props: {
                     label: "Scale",
                     rules: [
-                        (val) => !!val || proxy.$tr("isite.cms.message.fieldRequired"),
+                        (val) => !!val || i18n.tr("isite.cms.message.fieldRequired"),
                     ],
                     clearable: true,
                     options: scaleStore.scaleList,
