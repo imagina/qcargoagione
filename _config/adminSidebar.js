@@ -1,4 +1,4 @@
-const pages = config('pages') // Get Pages from config
+import pages from 'src/setup/pages' // Get Pages from config
 export default [
     {
         title: 'icargo.cms.sidebar.cargoInfo',

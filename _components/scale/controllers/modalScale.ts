@@ -1,8 +1,8 @@
-import Vue, { ref, computed, ComputedRef, getCurrentInstance } from 'vue';
+import { ref, computed, ComputedRef } from 'vue';
 import store from '../stores/scale';
 import scaleStore from '../stores/scale'
 import { getScaleMeasuresList } from '../services/getScales';
-import cache from '@imagina/qsite/_plugins/cache';
+import { cache, i18n } from 'src/plugins/utils';
 
 export default function useModalStation() {
     const refModalScale: any = ref(null);
@@ -14,7 +14,7 @@ export default function useModalStation() {
                 props: {
                     label: "Scale",
                     rules: [
-                        (val) => !!val || Vue.prototype.$tr("isite.cms.message.fieldRequired"),
+                        (val) => !!val || i18n.tr("isite.cms.message.fieldRequired"),
                     ],
                     clearable: true,
                     options: scaleStore.scaleList,

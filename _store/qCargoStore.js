@@ -1,6 +1,7 @@
 //import { reactive } from '@vue/composition-api';
-import baseService from '@imagina/qcrud/_services/baseService.js'
-import Vue, { reactive } from "vue";
+import baseService from 'modules/qcrud/_services/baseService.js'
+import { reactive } from "vue";
+import { alert } from 'src/plugins/utils'
 
 const state = reactive({
     awbTrackingList: {
@@ -24,7 +25,7 @@ export default function qCargoStore() {
             const response = await baseService.post('apiRoutes.qcargoagione.awbTracking', {key});
             if(response.data.errorMessage) {
                 state.errorMessage = response.data.errorMessage;
-                Vue.prototype.$alert.info({
+                alert.info({
                     mode: "modal",
                     title: '',
                     message: response.data.errorMessage,
@@ -45,7 +46,7 @@ export default function qCargoStore() {
         } catch (error) {
            hideLoading();
            resetAwbTrackingList();
-           console.log(error); 
+           console.log(error);
         }
     }
     function getAwbTrackingList() {

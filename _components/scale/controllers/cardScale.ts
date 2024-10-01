@@ -1,9 +1,7 @@
 
-import Vue, { computed } from "vue";
+import { computed } from "vue";
 import scaleStore from "../stores/scale";
 import { postScalePrint } from '../services/postScales';
-import alert from '@imagina/qsite/_plugins/alert';
-import { confirmPrint } from '../services/putScales';
 
 export default function cardScaleController() {
     const showModalScale = computed({
@@ -25,13 +23,13 @@ export default function cardScaleController() {
         await postScalePrint();
         scaleStore.loadingModalPrint = false;
     }
-    return { 
-        showModalScale, 
-        scale, 
-        measure, 
-        sendPrint, 
-        loading, 
-        titleStatus, 
-        scaleList 
+    return {
+        showModalScale,
+        scale,
+        measure,
+        sendPrint,
+        loading,
+        titleStatus,
+        scaleList
     };
 }
