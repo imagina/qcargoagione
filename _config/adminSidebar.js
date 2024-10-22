@@ -6,6 +6,7 @@ export default [
         children: [
             pages.qcargoagione.awbTracking,
             pages.qcargoagione.scales,
+            pages.qcargoagione.schedule
         ]
     },
 ]

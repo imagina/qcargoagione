@@ -28,5 +28,19 @@ export default {
       subHeader: {
         refresh: true,
       }
+  },
+  schedule: {
+    //permission: 'cargo.scheduled.manage',
+    activated: true,
+    authenticated: true,
+    path: '/cargo/schedule/index',
+    name: 'qcargoagione.admin.schedule',
+    page: () => import('src/modules/qramp/_components/scheduleKanban'),
+    layout: () => import('layouts/master.vue'),
+    title: 'ifly.cms.sidebar.schedule',
+    icon: 'fa-thin fa-calendar-days',
+    subHeader: {
+      refresh: true,
+    }
   }
 }
