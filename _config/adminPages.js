@@ -30,7 +30,7 @@ export default {
       }
   },
   schedule: {
-    //permission: 'cargo.scheduled.manage',
+    permission: 'cargo.scheduled.manage',
     activated: true,
     authenticated: true,
     path: '/cargo/schedule/index',
