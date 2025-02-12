@@ -46,14 +46,14 @@
           <q-table
             class="table-traking"
             title="Status information"
-            :data="awbTrackingList.segments"
+            :rows="awbTrackingList.segments"
             :columns="columns"
             :rows-per-page-options="[0]"
           >
           <template v-slot:body="props">
-                  <q-tr 
-                    :props="props" 
-                    class="tw-shadow-sm" 
+                  <q-tr
+                    :props="props"
+                    class="tw-shadow-sm"
                     :class="{'tw-bg-gray-100': Boolean(props.rowIndex % 2)}"
                   >
                   <q-td v-for="col in props.cols"
@@ -72,13 +72,13 @@
     <div
       v-if="loading"
       class="
-        tw-flex 
-        tw-justify-center 
-        tw-py-24 
-        tw-bg-white 
-        tw-bg-opacity-75 
+        tw-flex
+        tw-justify-center
+        tw-py-24
+        tw-bg-white
+        tw-bg-opacity-75
         tw-z-20
-        tw-shadow-lg 
+        tw-shadow-lg
         tw-rounded
       "
     >

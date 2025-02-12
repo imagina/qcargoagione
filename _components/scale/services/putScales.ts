@@ -1,4 +1,4 @@
-import baseService from '@imagina/qcrud/_services/baseService.js'
+import baseService from 'modules/qcrud/_services/baseService.js'
 import scaleStore from '../stores/scale'
 
 export async function confirmPrint(confirmed: boolean = false): Promise<void> {
@@ -11,4 +11,4 @@ export async function confirmPrint(confirmed: boolean = false): Promise<void> {
         scaleStore.loadingMeasuresList = false;
         console.log(error);
     }
-} 
+}

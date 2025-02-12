@@ -5,11 +5,11 @@ export default {
         authenticated: true,
         path: '/awb-tracking/index',
         name: 'qcargoagione.admin.cargoAdmin',
-        crud : import('../_crud/cargo.vue'),
-        page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
-        layout: () => import('@imagina/qsite/_layouts/master.vue'),
+        crud : import('modules/qcargoagione/_crud/cargo.vue'),
+        page: () => import('modules/qcrud/_pages/admin/crudPage'),
+        layout: () => import('layouts/master.vue'),
         title: 'icargo.cms.sidebar.awbTracking',
-        icon: 'fa-light fa-plane-departure', 
+        icon: 'fa-light fa-plane-departure',
         subHeader: {
           refresh: true,
         }
@@ -20,13 +20,27 @@ export default {
       authenticated: true,
       path: '/scale/index',
       name: 'qcargoagione.admin.scale',
-      crud : import('../_components/scale/index.vue'),
-      page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
-      layout: () => import('@imagina/qsite/_layouts/master.vue'),
+      crud : import('modules/qcargoagione/_components/scale/index.vue'),
+      page: () => import('modules/qcrud/_pages/admin/crudPage'),
+      layout: () => import('layouts/master.vue'),
       title: 'icargo.cms.sidebar.scaleTracking',
-      icon: 'fa-thin fa-weight-scale', 
+      icon: 'fa-thin fa-weight-scale',
       subHeader: {
         refresh: true,
       }
+  },
+  schedule: {
+    permission: 'ramp.cargo-work-order-schedules.manage',
+    activated: true,
+    authenticated: true,
+    path: '/cargo/schedule/index',
+    name: 'qcargoagione.admin.schedule',
+    page: () => import('src/modules/qramp/_components/scheduleKanban'),
+    layout: () => import('layouts/master.vue'),
+    title: 'ifly.cms.sidebar.schedule',
+    icon: 'fa-thin fa-calendar-days',
+    subHeader: {
+      refresh: true,
+    }
   }
 }

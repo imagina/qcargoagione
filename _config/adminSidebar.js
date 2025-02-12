@@ -1,4 +1,4 @@
-const pages = config('pages') // Get Pages from config
+import pages from 'src/setup/pages' // Get Pages from config
 export default [
     {
         title: 'icargo.cms.sidebar.cargoInfo',
@@ -6,6 +6,7 @@ export default [
         children: [
             pages.qcargoagione.awbTracking,
             pages.qcargoagione.scales,
+            pages.qcargoagione.schedule
         ]
     },
 ]

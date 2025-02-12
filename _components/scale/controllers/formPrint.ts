@@ -1,8 +1,9 @@
 
-import Vue, { computed, onBeforeUnmount, ref } from "vue";
+import { computed, onBeforeUnmount, ref } from "vue";
 import scaleStore from '../stores/scale'
 import { getScaleMeasuresList, getFlightaware } from "../services/getScales";
 import { postMeasures } from "../services/postScales";
+import { i18n, alert } from 'src/plugins/utils'
 export default function formPrintController() {
     const refFormScale: any = ref(null);
     const formPrint = computed(() => scaleStore.formPrint);
@@ -23,25 +24,25 @@ export default function formPrintController() {
     const formFields = computed(() => ({
         flightNumber: {
             value: null,
-            type: "search",
+            type: "input",
             props: {
                 rules: [
-                    (val) => !!val || Vue.prototype.$tr("isite.cms.message.fieldRequired"),
+                    (val) => !!val || i18n.tr("isite.cms.message.fieldRequired"),
                 ],
                 loading: scaleStore.loadingSearch,
-                label: `${Vue.prototype.$tr("ifly.cms.form.flight")}`,
+                label: `${i18n.tr("ifly.cms.form.flight")}`,
                 clearable: true,
                 maxlength: 10,
                 color: "primary",
             },
-            label: Vue.prototype.$tr("ifly.cms.form.flight"),
+            label: i18n.tr("ifly.cms.form.flight"),
         },
         date: {
             value: null,
             type: 'date',
             props: {
                 rules: [
-                    val => !!val || Vue.prototype.$tr('isite.cms.message.fieldRequired')
+                    val => !!val || i18n.tr('isite.cms.message.fieldRequired')
                 ],
                 hint: 'Format: YYYY-MM-DD',
                 mask: 'YYYY-MM-DD',
@@ -51,22 +52,17 @@ export default function formPrintController() {
                 color: "primary",
                 format24h: true,
             },
-            label: Vue.prototype.$tr('isite.cms.label.date'),
+            label: i18n.tr('isite.cms.label.date'),
         },
         destinationAirportId: {
             value: null,
-            type: 'crud',
+            type: 'select',
             props: {
-              crudType: 'select',
-              //@ts-ignore
-              crudData: import('src/modules/qfly/_crud/airport'),
-              crudProps: {
-                label: 'Destination Airport',
-                rules: [
-                    (val) => !!val || Vue.prototype.$tr("isite.cms.message.fieldRequired"),
-                ],
-              },
-              config: {options: {label: 'fullName', value: 'id'}},
+              label: 'Destination Airport',
+            },
+            loadOptions: {
+              apiRoute: 'apiRoutes.qfly.airports',
+              select: { label: 'fullName', id: 'id' },
             },
         },
         uldNumber: {
@@ -74,7 +70,7 @@ export default function formPrintController() {
             type: "input",
             props: {
                 rules: [
-                    (val) => !!val || Vue.prototype.$tr("isite.cms.message.fieldRequired"),
+                    (val) => !!val || i18n.tr("isite.cms.message.fieldRequired"),
                 ],
                 label: 'ULD Number',
                 clearable: true,
@@ -106,14 +102,19 @@ export default function formPrintController() {
         },
     ]));
     async function save(): Promise<void> {
+      try {
         scaleStore.loadingModalPrint = true;
         const validate = await refFormScale.value.validate();
         if(validate) {
-            await postMeasures();
-            await getScaleMeasuresList();
-            clear();
+          await postMeasures();
+          await getScaleMeasuresList();
+          clear();
+          alert.success('Measurements were sent successfully')
         }
         scaleStore.loadingModalPrint = false;
+      } catch (e) {
+        console.error(e);
+      }
     }
     function clear(): void {
         showModal.value = false;
@@ -137,10 +138,10 @@ export default function formPrintController() {
             scaleStore.loadingSearch = false;
         }
     }
-    return { 
-        formPrint, 
-        formFields, 
-        showModal, 
+    return {
+        formPrint,
+        formFields,
+        showModal,
         loading,
         actions,
         clear,
@@ -149,6 +150,6 @@ export default function formPrintController() {
         addManually,
         dialog,
         search,
-        dataTable, 
+        dataTable,
     };
 }
